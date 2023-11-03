@@ -36,19 +36,19 @@ class RéservationControleurTest {
     }
 
     @Test
-    //@PutMapping("/réservations/edit/{code}")
+    //@PutMapping("/réservations/{code}")
     fun `Étant donnée la réservation dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête PUT, alors on obtient un JSON qui contient une réservation dont le code est 78 ainsi qu'un code de retour 201` () {
 
     }
 
     @Test
-    //@DeleteMapping("/réservations/delete/{code}")
+    //@DeleteMapping("/réservations/{code}")
     fun `Étant donnée la réservation dont le code est 2 et qui est inscrit au service, lorsqu'on effectue une requête DELETE, alors on obtient un code de retour 204` () {
 
     }
 
     @Test
-    //@DeleteMapping("/réservations/delete/{code}")
+    //@DeleteMapping("/réservations/{code}")
     fun `Étant donnée la réservation dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête DELETE, alors on obtient un code de retour 404` () {
 
     }

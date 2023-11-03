@@ -31,25 +31,25 @@ class TrajetControleurTest {
     }
 
     @Test
-    //@PutMapping("/trajets/edit/{code}")
+    //@PutMapping("/trajets/{code}")
     fun `Étant donnée le trajet dont le code est 2 et qui est inscrit au service et dont le conducteur est John Doe lorsqu'on effectue une requête PUT pour modifier le conducteur pour « Jane Doe », alors on obtient un JSON qui contient un trajet dont le code est 2 et le conducteur est « Jane Doe » ainsi qu'un code de retour 200` () {
 
     }
 
     @Test
-    //@PutMapping("/trajets/edit/{code}")
+    //@PutMapping("/trajets/{code}")
     fun `Étant donnée le trajet dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête PUT, alors on obtient un JSON qui contient un trajet dont le code est 78 ainsi qu'un code de retour 201` () {
 
     }
 
     @Test
-    //@DeleteMapping("/trajets/delete/{code}")
+    //@DeleteMapping("/trajets/{code}")
     fun `Étant donnée le trajet dont le code est 2 et qui est inscrit au service, lorsqu'on effectue une requête DELETE, alors on obtient un code de retour 204` () {
 
     }
 
     @Test
-    //@DeleteMapping("/trajets/delete/{code}")
+    //@DeleteMapping("/trajets/{code}")
     fun `Étant donnée le trajet dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête DELETE, alors on obtient un code de retour 404` () {
 
     }

@@ -30,25 +30,25 @@ class UtilisateurControleursTest {
     }
 
     @Test
-    //@PutMapping("/utilisateurs/edit/{code}")
+    //@PutMapping("/utilisateurs/{code}")
     fun `Étant donnée l'utilisateur dont le code est 2 et qui est inscrit au service et dont le nom est John lorsqu'on effectue une requête PUT pour modifier le nom pour « Jane », alors on obtient un JSON qui contient un utilisateur dont le code est 2 et le nom est « Jane » ainsi qu'un code de retour 200` () {
 
     }
 
     @Test
-    //@PutMapping("/utilisateurs/edit/{code}")
+    //@PutMapping("/utilisateurs/{code}")
     fun `Étant donnée l'utilisateur dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête PUT, alors on obtient un JSON qui contient un utilisateur dont le code est 78 ainsi qu'un code de retour 201` () {
 
     }
 
     @Test
-    //@DeleteMapping("/utilisateurs/delete/{code}")
+    //@DeleteMapping("/utilisateurs/{code}")
     fun `Étant donnée l'utilisateur dont le code est 2 et qui est inscrit au service, lorsqu'on effectue une requête DELETE, alors on obtient un code de retour 204` () {
 
     }
 
     @Test
-    //@DeleteMapping("/utilisateurs/delete/{code}")
+    //@DeleteMapping("/utilisateurs/{code}")
     fun `Étant donnée l'utilisateur dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête DELETE, alors on obtient un code de retour 404` () {
 
     }
