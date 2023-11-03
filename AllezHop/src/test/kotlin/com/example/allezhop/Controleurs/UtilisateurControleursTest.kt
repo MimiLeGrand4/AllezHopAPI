@@ -31,7 +31,7 @@ class UtilisateurControleursTest {
 
     @Test
     //@PutMapping("/utilisateurs/edit/{code}")
-    fun `Étant donnée l'utilisateur dont le code est 2 et qui est inscrit au service et dont le nom est John lorsqu'on effectue une requête PUT pour modifier le conducteur pour « Jane », alors on obtient un JSON qui contient un utilisateur dont le code est 2 et le nom est « Jane » ainsi qu'un code de retour 200` () {
+    fun `Étant donnée l'utilisateur dont le code est 2 et qui est inscrit au service et dont le nom est John lorsqu'on effectue une requête PUT pour modifier le nom pour « Jane », alors on obtient un JSON qui contient un utilisateur dont le code est 2 et le nom est « Jane » ainsi qu'un code de retour 200` () {
 
     }
 
