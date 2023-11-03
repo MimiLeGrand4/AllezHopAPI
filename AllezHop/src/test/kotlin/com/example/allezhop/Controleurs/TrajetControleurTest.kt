@@ -38,7 +38,7 @@ class TrajetControleurTest {
 
     @Test
     //@PutMapping("/trajets/edit/{code}")
-    fun `Étant donnée le trajet dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête PUT, alors on obtient un JSON qui contient un trajet dont le code est 2 ainsi qu'un code de retour 201` () {
+    fun `Étant donnée le trajet dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête PUT, alors on obtient un JSON qui contient un trajet dont le code est 78 ainsi qu'un code de retour 201` () {
 
     }
 
