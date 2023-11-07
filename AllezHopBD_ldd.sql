@@ -1,3 +1,7 @@
+--
+-- Script de génération de la structure de la base de données du service AllezHop
+--
+
 CREATE TABLE IF NOT EXISTS adresse (
     id INT AUTO_INCREMENT PRIMARY KEY,
     appartement VARCHAR(255),
