@@ -4,16 +4,25 @@
 
 USE AllezHop;
 
-INSERT INTO utilisateur (nom, prénom, courriel, mot_de_passe)
+INSERT INTO utilisateur (nom, prénom, courriel)
 VALUES
-('Voirenne', 'Iris', 'iris.v@gmail.com', 'pass123'),
-('Doe', 'Jane', 'jane.doe@gmail.com', 'pass123'),
-('Tremblay', 'Bob', 'bob.t@gmail.com', 'pass123');
+('Voirenne', 'Iris', 'iris.v@gmail.com'),
+('Doe', 'Jane', 'jane.doe@gmail.com'),
+('Tremblay', 'Bob', 'bob.t@gmail.com');
 
-INSERT INTO trajet (destination, position_départ, heure_arrivée, heure_départ_max, utilisateur_code)
+INSERT INTO trajet (destination, position_départ, heure_arrivée, heure_départ_max, conducteur)
 VALUES
 (1, 5, '2023-01-19 08:15:00', '2023-01-19 07:40:00', 1),
-(1, 8, '2023-11-19 15:15:00', '2023-11-01 15:00:00', 2);
+(1, 8, '2023-11-19 15:15:00', '2023-11-01 15:00:00', 2),
+(3, 5, '2023-11-29 15:15:00', '2023-01-29 07:40:00', 1),
+(4, 5, '2023-11-20 15:15:00', '2023-01-20 07:40:00', 1);
+
+INSERT INTO réservation (passager, trajet_code)
+VALUES
+(3, 1), 
+(3, 2),
+(3, 4);
+
 
 INSERT INTO Adresse (numéro_municipal, rue, ville, état, code_postal, pays)
 VALUES
