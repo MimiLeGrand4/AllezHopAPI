@@ -48,12 +48,12 @@ CREATE TABLE if not EXISTS trajet (
 
 CREATE TABLE IF NOT EXISTS réservation (
   `code` int NOT NULL AUTO_INCREMENT,
-  `utilisateur_code` int NOT NULL,
+  `passager` int NOT NULL,
   `trajet_code` int NOT NULL,
   `horodatage` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`code`),
-  KEY `utilisateur_code` (`utilisateur_code`),
+  KEY `passager` (`passager`),
   KEY `trajet_code` (`trajet_code`),
-  CONSTRAINT `réservation_ibfk_1` FOREIGN KEY (`utilisateur_code`) REFERENCES `utilisateur` (`code`),
+  CONSTRAINT `réservation_ibfk_1` FOREIGN KEY (`passager`) REFERENCES `utilisateur` (`code`),
   CONSTRAINT `réservation_ibfk_2` FOREIGN KEY (`trajet_code`) REFERENCES `trajet` (`code`)
 );
