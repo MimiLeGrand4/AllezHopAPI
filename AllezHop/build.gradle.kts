@@ -25,7 +25,6 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	runtimeOnly("com.mysql:mysql-connector-j")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
-
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.security:spring-security-oauth2-resource-server")
