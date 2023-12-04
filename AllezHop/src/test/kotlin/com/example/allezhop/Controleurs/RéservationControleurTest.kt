@@ -1,5 +1,6 @@
 package com.example.allezhop.Controleurs
 
+import com.example.allezhop.DAO.IntrouvableException
 import com.example.allezhop.Modèles.Reservation
 import com.example.allezhop.Services.ReservationService
 import org.junit.jupiter.api.Test
@@ -46,7 +47,7 @@ class RéservationControleurTest {
     fun `Étant donné la réservation dont le code est 1 lorsqu'on effectue une requête GET de recherche par code alors on obtient un JSON qui contient une réservation dont le code est 1 et un code de retour 200`() {
         val reservation = Reservation(1, Timestamp(System.currentTimeMillis()), 1, 2)
 
-        Mockito.`when`(service.chercherParCode("1")).thenReturn(listOf(reservation))
+        Mockito.`when`(service.chercherParCode(1)).thenReturn(listOf(reservation))
 
         mockMvc.perform(MockMvcRequestBuilders.get("/reservations/1"))
             .andExpect(MockMvcResultMatchers.status().isOk)
@@ -54,13 +55,23 @@ class RéservationControleurTest {
             .andExpect(MockMvcResultMatchers.jsonPath("$[0].code").value(1))
 
     }
-/*
+
     @Test
-    //GetMapping("/réservations/{code}")
+    //GetMapping("/reservations/{code}")
     fun `Étant donné la réservation dont le code est 0 et qui n'est pas inscrit au service, lorsqu'on effectue une requête GET de recherche par code, alors on obtient un code de retour 404 et le message "la réservation 0 n'est pas inscrit au service"`() {
+        val exceptionParam = "not_found"
 
+        Mockito.`when`(service.chercherParCode(0)).thenReturn(null)
+
+        mockMvc.perform(get("/reservations/0", exceptionParam)
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isNotFound)
+            .andExpect { résultat ->
+                assertTrue(résultat.resolvedException is IntrouvableException)
+                assertEquals("La reservation 0 n'est pas inscrit au service.", résultat.resolvedException?.message)
+            }
     }
-
+/*
     @Test
     //PostMapping("/réservations")
     fun `Étant donnée la réservation dont le code est 1 qui existe déjà lorsqu'on effectue une requête POST pour l'ajouter alors on obtient un code de retour 409`() {
