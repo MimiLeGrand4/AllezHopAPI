@@ -1,16 +1,60 @@
 package com.example.allezhop.Controleurs
 
+import com.example.allezhop.Modèles.Reservation
+import com.example.allezhop.Services.ReservationService
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.http.MediaType
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+
+
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+import org.springframework.web.bind.annotation.PostMapping
+import java.sql.Timestamp
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class RéservationControleurTest {
+
+    @MockBean
+    lateinit var service: ReservationService
+
+    @Autowired
+    private lateinit var mockMvc: MockMvc
+
+    //il faut modifier la bd reservation pour qu'elle les meme tables que data class reservation
+    /*CREATE TABLE reservation (
+    code INT PRIMARY KEY,
+    horodatage TIMESTAMP,
+    trajet_code INT,
+    passager INT
+);
+*/
     @Test
-    //GetMapping("/réservations/{code}")
+    //GetMapping("/reservations/{code}")
     fun `Étant donné la réservation dont le code est 1 lorsqu'on effectue une requête GET de recherche par code alors on obtient un JSON qui contient une réservation dont le code est 1 et un code de retour 200`() {
+        val reservation = Reservation(1, Timestamp(System.currentTimeMillis()), 1, 2)
+
+        Mockito.`when`(service.chercherParCode("1")).thenReturn(listOf(reservation))
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/reservations/1"))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.jsonPath("$[0].code").value(1))
 
     }
-
+/*
     @Test
     //GetMapping("/réservations/{code}")
     fun `Étant donné la réservation dont le code est 0 et qui n'est pas inscrit au service, lorsqu'on effectue une requête GET de recherche par code, alors on obtient un code de retour 404 et le message "la réservation 0 n'est pas inscrit au service"`() {
@@ -52,4 +96,6 @@ class RéservationControleurTest {
     fun `Étant donnée la réservation dont le code est 78 et qui n'est pas inscrit au service, lorsqu'on effectue une requête DELETE, alors on obtient un code de retour 404` () {
 
     }
+
+ */
 }
