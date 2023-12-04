@@ -1,10 +1,40 @@
 package com.example.allezhop.Controleurs
 
+
+import com.example.allezhop.Modèles.Reservation
+import com.example.allezhop.Services.ReservationService
+import com.example.allezhop.Services.UtilisateurService
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.mock.mockito.MockBean
+import org.springframework.http.MediaType
+import org.springframework.test.web.servlet.MockMvc
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+
+
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
+
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+import org.springframework.web.bind.annotation.PostMapping
+import java.sql.Timestamp
 
 @SpringBootTest
+@AutoConfigureMockMvc
+
 class UtilisateurControleursTest {
+
+    @MockBean
+    lateinit var service: UtilisateurService
+
+    @Autowired
+    private lateinit var mockMvc: MockMvc
     @Test
     //GetMapping("/utilisateurs/{code}")
     fun `Étant donné l'utilisateur dont le code est 1 lorsqu'on effectue une requête GET de recherche par code alors on obtient un JSON qui contient un utilisateur dont le code est 1 et un code de retour 200`() {

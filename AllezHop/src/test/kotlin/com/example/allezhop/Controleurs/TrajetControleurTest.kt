@@ -1,11 +1,39 @@
 package com.example.allezhop.Controleurs
 
+import com.example.allezhop.Modèles.Reservation
+import com.example.allezhop.Modèles.Trajet
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.http.MediaType
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import java.sql.Timestamp
+import com.example.allezhop.Services.TrajetService
+
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.mock.mockito.MockBean
+
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.springframework.test.web.servlet.MockMvc
+
+
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.*
+import org.springframework.web.bind.annotation.PostMapping
+
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class TrajetControleurTest {
+    @MockBean
+    lateinit var service: TrajetService
 
+    @Autowired
+    private lateinit var mockMvc: MockMvc
     @Test
     //GetMapping("/trajet/{code}")
     fun `Étant donné le trajet dont le code est 1 lorsqu'on effectue une requête GET de recherche par code alors on obtient un JSON qui contient un trajet dont le code est 1 et un code de retour 200`() {
