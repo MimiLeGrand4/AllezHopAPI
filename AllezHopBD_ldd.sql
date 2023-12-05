@@ -1,6 +1,7 @@
 --
 -- Script de génération de la structure de la base de données du service AllezHop
 --
+--CREATE DATABASE Allezhop
 
 CREATE TABLE IF NOT EXISTS adresse (
     `id` int NOT NULL AUTO_INCREMENT,
