@@ -30,7 +30,8 @@ class ReservationImpl(val db: JdbcTemplate):  ReservationDAO {
                 code = response.getInt("code"),
                 horodatage = response.getTimestamp("horodatage"),
                 trajet_code = response.getInt("trajet_code"),
-                passager = response.getInt("passager")
+                passager = response.getInt("utilisateur_code")
+
             )
         }
 
@@ -46,11 +47,11 @@ class ReservationImpl(val db: JdbcTemplate):  ReservationDAO {
 
 
 
+
     override fun ajouter(reservation: Reservation): Reservation? {
-        val sql = "INSERT INTO réservation (code, horodatage, trajet_code, utilisateur_code) VALUES (?, ?, ?, ?)"
+        val sql = "INSERT INTO réservation (horodatage, trajet_code, utilisateur_code) VALUES (?, ?, ?)"
         db.update(
             sql,
-            reservation.code,
             reservation.horodatage,
             reservation.trajet_code,
             reservation.passager
