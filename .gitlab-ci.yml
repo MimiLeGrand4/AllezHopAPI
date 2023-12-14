@@ -1,0 +1,29 @@
+stages:
+  - build
+  - test
+
+image: openjdk:11
+
+before_script:
+  - chmod +x ./gradlew
+
+build:
+  stage: build
+  script:
+    - ./gradlew assemble
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 1 hour
+  only:
+    - main
+
+test:
+  stage: test
+  script:
+    - ./gradlew test
+  artifacts:
+    reports:
+      junit: build/test-results/test/TEST-*.xml
+  only:
+    - main
