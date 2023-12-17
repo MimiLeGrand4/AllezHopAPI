@@ -1,5 +1,6 @@
 package com.example.allezhop.DAO
 
+import com.example.allezhop.Modèles.Reservation
 import com.example.allezhop.Modèles.Utilisateur
 import crosemont.tdi.g66.restaurantapirest.DAO.SourceDonnées
 import org.springframework.jdbc.core.JdbcTemplate
@@ -31,12 +32,66 @@ class UtilisateurDAOImplMémoire(val db: JdbcTemplate):  UtilisateurDAO {
             )
         }
 
-        return results
+        return if (results.isEmpty()) null else results
+    }
+    override fun chercherParNom(nom: String): List<Utilisateur>? {
+        val sql = "SELECT * FROM utilisateur WHERE nom = ?"
+        val results = db.query(sql, nom) { response, _ ->
+            Utilisateur(
+                response.getInt("code"),
+                response.getString("nom"),
+                response.getString("prénom"),
+                response.getString("courriel")
+            )
+        }
+
+        return if (results.isEmpty()) null else results
     }
 
+    override fun chercherParPrénom(prénom: String): List<Utilisateur>? {
+        val sql = "SELECT * FROM utilisateur WHERE prénom = ?"
+        val results = db.query(sql, prénom) { response, _ ->
+            Utilisateur(
+                response.getInt("code"),
+                response.getString("nom"),
+                response.getString("prénom"),
+                response.getString("courriel")
+            )
+        }
+        return if (results.isEmpty()) null else results
+    }
+
+    override fun chercherParCourriel(courriel: String): List<Utilisateur>? {
+        val sql = "SELECT * FROM utilisateur WHERE courriel = ?"
+        val results = db.query(sql, courriel) { response, _ ->
+            Utilisateur(
+                response.getInt("code"),
+                response.getString("nom"),
+                response.getString("prénom"),
+                response.getString("courriel")
+            )
+        }
+        return if (results.isEmpty()) null else results
+    }
+
+    override fun modifier(code: Int, utilisateur: Utilisateur): Utilisateur? {
+        val sql =
+            "UPDATE utilisateur SET nom = ?, prénom = ?, courriel = ? WHERE code = ?"
+
+        val modifier = db.update(
+            sql,
+            utilisateur.nom,
+            utilisateur.prénom,
+            utilisateur.courriel,
+            code
+        )
+        return if (modifier > 0) utilisateur else null
+    }
+
+
     override fun ajouter(utilisateur: Utilisateur): Utilisateur? {
-        val insertQuery = "insert into utilisateur (nom, prénom, courriel) values (?, ?, ?)"
-        db.update(insertQuery,
+        val sql = "INSERT INTO utilisateur (nom, prénom, courriel) values (?, ?, ?)"
+        db.update(sql,
             utilisateur.nom,
             utilisateur.prénom,
             utilisateur.courriel)
@@ -44,20 +99,13 @@ class UtilisateurDAOImplMémoire(val db: JdbcTemplate):  UtilisateurDAO {
         return utilisateur
     }
 
-    override fun modifier(code: String, utilisateur: Utilisateur): Utilisateur? {
-        val updateQuery = "update utilisateur set nom=?, prénom=?, courriel=? where code=?"
-        db.update(updateQuery,
-            utilisateur.nom,
-            utilisateur.prénom,
-            utilisateur.courriel,
-            code)
-        return utilisateur
-    }
 
 
-    override fun supprimer(utilisateur: String) {
-        val deleteQuery = "delete from utilisateur where code = ?"
-        db.update(deleteQuery, utilisateur)
+
+
+    override fun supprimer(code: String) {
+        val sql = "DELETE FROM utilisateur WHERE code = ?"
+        db.update(sql, code)
     }
 
 }
