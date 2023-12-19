@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS adresse (
 );
 
 CREATE TABLE if not EXISTS utilisateur (
-	code VARCHAR(255) PRIMARY KEY,
+	code VARCHAR(500) PRIMARY KEY,
 	nom VARCHAR(255) not null,
 	prénom VARCHAR(255) not null,
 	courriel VARCHAR(255) not null,
