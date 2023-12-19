@@ -8,11 +8,11 @@
 
 USE AllezHop;
 --Insert utilisateur en premier ( séparer des autres, une à la fois )
-INSERT INTO utilisateur (nom, prénom, courriel)
+INSERT INTO utilisateur (code, nom, prénom, courriel, est_conducteur, est_passager)
 VALUES
-('Voirenne', 'Iris', 'iris.v@gmail.com'),
-('Doe', 'Jane', 'jane.doe@gmail.com'),
-('Tremblay', 'Bob', 'bob.t@gmail.com');
+("1", 'Voirenne', 'Iris', 'iris.v@gmail.com', 1, 0),
+("2", 'Doe', 'Jane', 'jane.doe@gmail.com', 1, 0),
+("3", 'Tremblay', 'Bob', 'bob.t@gmail.com', 1, 0);
 
 --Insert Adresse après (séparer des autres)
 INSERT INTO Adresse (numéro_municipal, rue, ville, état, code_postal, pays)
@@ -40,16 +40,16 @@ VALUES
 --Insert Trajet après avoir insérer Adresse
 INSERT INTO trajet (destination, position_départ, heure_arrivée, heure_départ_max, conducteur)
 VALUES
-(1, 5, '2023-01-19 08:15:00', '2023-01-19 07:40:00', 1),
-(1, 8, '2023-11-19 15:15:00', '2023-11-01 15:00:00', 2),
-(3, 5, '2023-11-29 15:15:00', '2023-01-29 07:40:00', 1),
-(4, 5, '2023-11-20 15:15:00', '2023-01-20 07:40:00', 1);
+(1, 5, '2023-01-19 08:15:00', '2023-01-19 07:40:00', "1"),
+(1, 8, '2023-11-19 15:15:00', '2023-11-01 15:00:00', "2"),
+(3, 5, '2023-11-29 15:15:00', '2023-01-29 07:40:00', "1"),
+(4, 5, '2023-11-20 15:15:00', '2023-01-20 07:40:00', "1");
 
 --Insert réservation après avoir insérer réservation
 INSERT INTO réservation (passager, trajet_code)
 VALUES
-(3, 1), 
-(3, 2),
-(3, 4);
+("2", 1), 
+("3", 2),
+("3", 4);
 
 
