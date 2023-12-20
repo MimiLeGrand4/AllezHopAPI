@@ -8,7 +8,7 @@
 
 USE AllezHop;
 
-INSERT INTO utilisateur (code, nom, prénom, courriel, est_conducteur, est_passager)
+INSERT INTO utilisateur (utilisateur_code, nom, prénom, courriel, est_conducteur, est_passager)
 VALUES
 ("auth0|65818d99132aa175d51c78d3", 'Voirenne', 'Iris', 'iris.v@gmail.com', 1, 0),
 ("auth0|65818de66a1998a82fac7f26", 'Doe', 'Jane', 'jane.doe@gmail.com', 1, 0),

@@ -19,11 +19,11 @@ CREATE TABLE IF NOT EXISTS adresse (
 );
 
 CREATE TABLE if not EXISTS utilisateur (
-	code VARCHAR(500) PRIMARY KEY,
+	utilisateur_code VARCHAR(500) PRIMARY KEY,
 	nom VARCHAR(255) not null,
 	prénom VARCHAR(255) not null,
 	courriel VARCHAR(255) not null,
-	est_conducteur TINYINT(1), 
+	est_conducteur TINYINT(1),
 	est_passager TINYINT(1)
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE if not EXISTS trajet (
 	KEY `trajet_ibfk_1` (`conducteur`),
 	CONSTRAINT `trajet_adresse_fk1` FOREIGN KEY (`destination`) REFERENCES `adresse` (`id`),
 	CONSTRAINT `trajet_adresse_fk2` FOREIGN KEY (`position_départ`) REFERENCES `adresse` (`id`),
-	CONSTRAINT `trajet_ibfk_1` FOREIGN KEY (`conducteur`) REFERENCES `utilisateur` (`code`)
+	CONSTRAINT `trajet_ibfk_1` FOREIGN KEY (`conducteur`) REFERENCES `utilisateur` (`utilisateur_code`)
 );
 
 CREATE TABLE IF NOT EXISTS réservation (
@@ -52,6 +52,6 @@ CREATE TABLE IF NOT EXISTS réservation (
   PRIMARY KEY (`code`),
   KEY `passager` (`passager`),
   KEY `trajet_code` (`trajet_code`),
-  CONSTRAINT `réservation_ibfk_1` FOREIGN KEY (`passager`) REFERENCES `utilisateur` (`code`),
-  CONSTRAINT `réservation_ibfk_2` FOREIGN KEY (`trajet_code`) REFERENCES `trajet` (`code`)
+  CONSTRAINT `réservation_ibfk_1` FOREIGN KEY (`passager`) REFERENCES `utilisateur` (`utilisateur_code`),
+  CONSTRAINT `réservation_ibfk_2` FOREIGN KEY (`trajet_code`) REFERENCES `trajet` (`code`) ON delete CASCADE
 );
