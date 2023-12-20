@@ -34,7 +34,7 @@ CREATE TABLE if not EXISTS trajet (
 	`position_départ` int NOT NULL,
 	`heure_arrivée` timestamp NOT NULL,
 	`heure_départ_max` timestamp NOT NULL,
-	`conducteur` VARCHAR(255) NOT NULL,
+	`conducteur` VARCHAR(500) NOT NULL,
 	PRIMARY KEY (`code`),
 	KEY `trajet_adresse_fk1_idx` (`destination`,`position_départ`),
 	KEY `trajet_adresse_fk2_idx` (`position_départ`),
